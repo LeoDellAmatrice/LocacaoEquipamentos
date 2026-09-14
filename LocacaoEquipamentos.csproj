@@ -58,15 +58,15 @@
   <ItemGroup>
     <Compile Include="Classes\Clientes.cs" />
     <Compile Include="Classes\DataBase\ClientesMap.cs" />
-    <Compile Include="Classes\DataContex.cs" />
+    <Compile Include="Classes\DataContext.cs" />
     <Compile Include="Classes\Equipamentos.cs" />
     <Compile Include="Classes\Locacao.cs" />
     <Compile Include="Classes\TiposEquipamento.cs" />
-    <Compile Include="Enums\EnumRequest.cs" />
-    <Compile Include="Enums\EnumSituacaoEquipamento.cs" />
-    <Compile Include="Enums\EnumSituacaoLocacao.cs" />
-    <Compile Include="Enums\EnumTipoEquipamento.cs" />
-    <Compile Include="Enums\EnumTipoPessoa.cs" />
+    <Compile Include="Enums\RequestEnum.cs" />
+    <Compile Include="Enums\SituacaoEquipamentoEnum.cs" />
+    <Compile Include="Enums\SituacaoLocacaoEnum.cs" />
+    <Compile Include="Enums\TipoEquipamentoEnum.cs" />
+    <Compile Include="Enums\TipoPessoaEnum.cs" />
     <Compile Include="FormAtualizaCliente.cs">
       <SubType>Form</SubType>
     </Compile>

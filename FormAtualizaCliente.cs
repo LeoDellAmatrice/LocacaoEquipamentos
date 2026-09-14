@@ -2,23 +2,14 @@
 using LocacaoEquipamentos.Classes.DataBase;
 using LocacaoEquipamentos.Enums;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LocacaoEquipamentos
 {
     public partial class FormAtualizaCliente : Form
     {
-        private EnumRequest LocalRequest { get; set; }
-        public FormAtualizaCliente(int idCliente, EnumRequest localRequest)
+        private RequestEnum LocalRequest { get; set; }
+        public FormAtualizaCliente(int idCliente, RequestEnum localRequest)
         {
             LocalRequest = localRequest;
 
@@ -28,12 +19,12 @@ namespace LocacaoEquipamentos
 
             switch (LocalRequest)
             {
-                case EnumRequest.Incluir:
+                case RequestEnum.Incluir:
                     break;
-                case EnumRequest.Alterar:
+                case RequestEnum.Alterar:
                     BuscarCliente(idCliente);
                     break;
-                case EnumRequest.Excluir:
+                case RequestEnum.Excluir:
                     BuscarCliente(idCliente);
                     break;
             }
@@ -43,20 +34,20 @@ namespace LocacaoEquipamentos
 
         private void InicializaCampos()
         {
-            CbTipoPessoa.DataSource = Enum.GetValues(typeof(EnumTipoPessoa));
+            CbTipoPessoa.DataSource = Enum.GetValues(typeof(TipoPessoaEnum));
 
             ExibeCamposTipoPessoa();
         }
 
         private void ExibeCamposTipoPessoa()
         {
-            switch ((EnumTipoPessoa)CbTipoPessoa.SelectedItem)
+            switch ((TipoPessoaEnum)CbTipoPessoa.SelectedItem)
             {
-                case EnumTipoPessoa.Fisica:
+                case TipoPessoaEnum.Fisica:
                     TabPagePessoaJuridica.Parent = null;
                     TabPagePessoaFisica.Parent = TabControlTipoPessoa;
                     break;
-                case EnumTipoPessoa.Juridica:
+                case TipoPessoaEnum.Juridica:
                     TabPagePessoaJuridica.Parent = TabControlTipoPessoa;
                     TabPagePessoaFisica.Parent = null;
                     break;
@@ -69,7 +60,7 @@ namespace LocacaoEquipamentos
 
             try
             {
-                using (var context = new DataContex())
+                using (var context = new DataContext())
                 {
                     var cliente = context.Clientes.Find(idCliente) ?? throw new Exception("Erro ao Encontrar o cliente.");
 
@@ -107,26 +98,26 @@ namespace LocacaoEquipamentos
             {
                 var cliente = new Clientes();
 
-                cliente.SetTipoPessoa((EnumTipoPessoa)CbTipoPessoa.SelectedItem);
+                cliente.SetTipoPessoa((TipoPessoaEnum)CbTipoPessoa.SelectedItem);
 
                 switch (cliente.TipoPessoa)
                 {
-                    case EnumTipoPessoa.Fisica:
+                    case TipoPessoaEnum.Fisica:
                         cliente.SetPessoaFisica(Convert.ToInt32("0"+TboxIdCliente.Text), TboxNome.Text, TboxTelefone.Text, TboxEmail.Text, TboxCPF.Text);
                         break;
-                    case EnumTipoPessoa.Juridica:
+                    case TipoPessoaEnum.Juridica:
                         cliente.SetPessoaJuridica(Convert.ToInt32("0" + TboxIdCliente.Text), TboxRazaoSocial.Text, TboxNomeFantasia.Text, TboxTelefone.Text, TboxEmail.Text, TboxCNPJ.Text);
                         break;
                 }
 
-                using (var context = new DataContex())
+                using (var context = new DataContext())
                 {
                     switch (LocalRequest)
                     {
-                        case EnumRequest.Incluir:
+                        case RequestEnum.Incluir:
                             context.Clientes.Add(cliente);
                             break;
-                        case EnumRequest.Alterar:
+                        case RequestEnum.Alterar:
                             context.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
                             break;
                     }

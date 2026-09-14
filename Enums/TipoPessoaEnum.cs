@@ -1,6 +1,6 @@
 ﻿namespace LocacaoEquipamentos.Enums
 {
-    public enum EnumTipoPessoa
+    public enum TipoPessoaEnum
     {
         Fisica = 1,
         Juridica = 2,

@@ -1,6 +1,6 @@
 ﻿namespace LocacaoEquipamentos.Enums
 {
-    public enum EnumRequest
+    public enum RequestEnum
     {
         Incluir,
         Alterar,

@@ -19,7 +19,7 @@ namespace LocacaoEquipamentos
 
         private void GetDataClientes()
         {
-            using (var context = new DataContex())
+            using (var context = new DataContext())
             {
                 // dataGridView1.DataSource = (from clientes in context.Clientes select clientes).ToList();
 
@@ -70,7 +70,7 @@ namespace LocacaoEquipamentos
         private void BtnIncluir_Click(object sender, EventArgs e)
         {
             var idCliente = 0;
-            using (var form = new FormAtualizaCliente(idCliente, EnumRequest.Incluir))
+            using (var form = new FormAtualizaCliente(idCliente, RequestEnum.Incluir))
             {
                 form.ShowDialog();
             }
@@ -82,7 +82,7 @@ namespace LocacaoEquipamentos
             if (dataGridView1.CurrentRow is null) return;
 
             var idCliente = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdCliente"].Value);
-            using (var form = new FormAtualizaCliente(idCliente, EnumRequest.Alterar))
+            using (var form = new FormAtualizaCliente(idCliente, RequestEnum.Alterar))
             {
                 form.ShowDialog();
             }

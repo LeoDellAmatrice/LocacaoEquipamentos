@@ -1,6 +1,6 @@
 ﻿namespace LocacaoEquipamentos.Enums
 {
-    public enum EnumTipoEquipamento
+    public enum TipoEquipamentoEnum
     {
         Ferramenta,
         Informatica,

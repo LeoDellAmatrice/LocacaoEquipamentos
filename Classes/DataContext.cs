@@ -3,9 +3,9 @@ using System.Data.Entity;
 
 namespace LocacaoEquipamentos.Classes
 {
-    public class DataContex : DbContext
+    public class DataContext : DbContext
     {
-        public DataContex() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LOCACAO;Integrated Security = True;Connect Timeout=30;Encrypt=False") { }
+        public DataContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LOCACAO;Integrated Security = True;Connect Timeout=30;Encrypt=False") { }
         
         public DbSet<Clientes> Clientes { get; set; }
 

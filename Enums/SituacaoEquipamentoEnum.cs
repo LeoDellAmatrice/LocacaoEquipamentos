@@ -1,6 +1,6 @@
 ﻿namespace LocacaoEquipamentos.Enums
 {
-    public enum EnumSituacaoEquipamento
+    public enum SituacaoEquipamentoEnum
     {
         Disponivel,
         Alugado,

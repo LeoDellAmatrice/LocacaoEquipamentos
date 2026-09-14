@@ -13,7 +13,7 @@ namespace LocacaoEquipamentos.Classes
 
         public DateTime DataAquisicao { get; private set; }
 
-        public EnumSituacaoEquipamento SituacaoEquipamento { get; private set; }
+        public SituacaoEquipamentoEnum SituacaoEquipamento { get; private set; }
 
         public TiposEquipamentos TipoEquipamento { get; private set; }
 

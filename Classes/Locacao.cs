@@ -16,7 +16,7 @@ namespace LocacaoEquipamentos.Classes
 
         public DateTime DataEfetivaDevolucao { get; private set; }
 
-        public EnumSituacaoLocacao Situacao { get; private set; }
+        public SituacaoLocacaoEnum Situacao { get; private set; }
 
         public decimal ValorDiaria { get; set; }
 

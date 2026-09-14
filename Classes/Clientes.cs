@@ -7,7 +7,7 @@ namespace LocacaoEquipamentos.Classes.DataBase
     {
         public int IdCliente { get; private set; }
 
-        public EnumTipoPessoa TipoPessoa { get; private set; }
+        public TipoPessoaEnum TipoPessoa { get; private set; }
 
         public string Nome { get; private set; }
 
@@ -23,14 +23,14 @@ namespace LocacaoEquipamentos.Classes.DataBase
 
         public string Cnpj { get; private set; }
 
-        public void SetTipoPessoa(EnumTipoPessoa tipoPessoa)
+        public void SetTipoPessoa(TipoPessoaEnum tipoPessoa)
         {
             TipoPessoa = tipoPessoa;
         }
 
         public void SetPessoaFisica(int idCliente, string nome, string telefone, string email, string cpf)
         {
-            if (TipoPessoa != EnumTipoPessoa.Fisica) throw new Exception("Tipo pessoa inválido");
+            if (TipoPessoa != TipoPessoaEnum.Fisica) throw new Exception("Tipo pessoa inválido");
 
             IdCliente = idCliente;
             Nome = nome;
@@ -41,7 +41,7 @@ namespace LocacaoEquipamentos.Classes.DataBase
 
         public void SetPessoaJuridica(int idCliente, string razaoSocial, string nomeFantasia, string telefone, string email, string cnpj)
         {
-            if (TipoPessoa != EnumTipoPessoa.Juridica) throw new Exception("Tipo pessoa inválido");
+            if (TipoPessoa != TipoPessoaEnum.Juridica) throw new Exception("Tipo pessoa inválido");
 
             IdCliente = idCliente;
             RazaoSocial = razaoSocial;
