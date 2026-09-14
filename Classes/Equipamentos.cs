@@ -1,0 +1,23 @@
+﻿using LocacaoEquipamentos.Enums;
+using System;
+
+namespace LocacaoEquipamentos.Classes
+{
+    public class Equipamentos
+    {
+        public int IdEquipamento { get; private set; }
+
+        public string Descricao { get; private set; }
+
+        public decimal ValorDiaria { get; private set; }
+
+        public DateTime DataAquisicao { get; private set; }
+
+        public EnumSituacaoEquipamento SituacaoEquipamento { get; private set; }
+
+        public TiposEquipamentos TipoEquipamento { get; private set; }
+
+
+
+    }
+}
