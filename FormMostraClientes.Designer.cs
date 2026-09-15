@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnExcluir = new System.Windows.Forms.Button();
+            this.BtnExcluir = new System.Windows.Forms.Button();
             this.BtnAlterar = new System.Windows.Forms.Button();
             this.BtnIncluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -48,19 +48,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(847, 353);
             this.dataGridView1.TabIndex = 0;
             // 
-            // btnExcluir
+            // BtnExcluir
             // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluir.Location = new System.Drawing.Point(752, 371);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnExcluir.Size = new System.Drawing.Size(107, 35);
-            this.btnExcluir.TabIndex = 1;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnExcluir.Location = new System.Drawing.Point(752, 371);
+            this.BtnExcluir.Name = "BtnExcluir";
+            this.BtnExcluir.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.BtnExcluir.Size = new System.Drawing.Size(107, 35);
+            this.BtnExcluir.TabIndex = 1;
+            this.BtnExcluir.Text = "Excluir";
+            this.BtnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnExcluir.UseVisualStyleBackColor = true;
+            this.BtnExcluir.Click += new System.EventHandler(this.BtnExcluir_Click);
             // 
             // BtnAlterar
             // 
@@ -99,7 +100,7 @@
             this.ClientSize = new System.Drawing.Size(871, 458);
             this.Controls.Add(this.BtnIncluir);
             this.Controls.Add(this.BtnAlterar);
-            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.BtnExcluir);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormMostraClientes";
             this.Text = "FormMostraClientes";
@@ -111,7 +112,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button BtnExcluir;
         private System.Windows.Forms.Button BtnAlterar;
         private System.Windows.Forms.Button BtnIncluir;
     }

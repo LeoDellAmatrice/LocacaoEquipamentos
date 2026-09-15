@@ -1,5 +1,6 @@
 ﻿using LocacaoEquipamentos.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace LocacaoEquipamentos.Classes.DataBase
 {
@@ -51,5 +52,16 @@ namespace LocacaoEquipamentos.Classes.DataBase
             Cnpj = cnpj;
         }
 
+        public void Excluir(DataContext context, int idCliente)
+        {
+            IdCliente = idCliente;
+
+            var entry = context.Entry(this);
+
+            if (entry.State == System.Data.Entity.EntityState.Detached) context.Clientes.Attach(this);
+
+            context.Clientes.Remove(this);
+            context.SaveChanges();
+        }
     }
 }

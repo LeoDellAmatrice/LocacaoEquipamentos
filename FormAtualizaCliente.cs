@@ -26,6 +26,7 @@ namespace LocacaoEquipamentos
                     break;
                 case RequestEnum.Excluir:
                     BuscarCliente(idCliente);
+                    Excluir(idCliente);
                     break;
             }
 
@@ -125,6 +126,25 @@ namespace LocacaoEquipamentos
                     context.SaveChanges();
                 }
 
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private bool Excluir(int idCliente)
+        {
+            try
+            {
+                using (var context = new DataContext())
+                {
+                    var cliente = new Clientes();
+
+                    cliente.Excluir(context, idCliente);
+                }
                 return true;
             }
             catch (Exception ex)

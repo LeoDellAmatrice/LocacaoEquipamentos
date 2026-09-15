@@ -21,7 +21,7 @@ namespace LocacaoEquipamentos
         {
             using (var context = new DataContext())
             {
-                // dataGridView1.DataSource = (from clientes in context.Clientes select clientes).ToList();
+                dataGridView1.Rows.Clear();
 
                 var lista = (from clientes in context.Clientes select clientes).ToList();
 
@@ -32,10 +32,7 @@ namespace LocacaoEquipamentos
 
             }
         }
-        private void AtualizaBrowse()
-        {
 
-        }
         private void ConfiguraBrowse()
         {
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9);
@@ -75,6 +72,7 @@ namespace LocacaoEquipamentos
                 form.ShowDialog();
             }
 
+            GetDataClientes();
         }
 
         private void BtnAlterar_Click(object sender, EventArgs e)
@@ -87,7 +85,20 @@ namespace LocacaoEquipamentos
                 form.ShowDialog();
             }
 
-            
+            GetDataClientes();
+        }
+
+        private void BtnExcluir_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow is null) return;
+
+            var idCliente = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdCliente"].Value);
+            using (var form = new FormAtualizaCliente(idCliente, RequestEnum.Excluir))
+            {
+                form.Close();
+            }
+
+            GetDataClientes();
         }
     }
 }
