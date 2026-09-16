@@ -158,5 +158,10 @@ namespace LocacaoEquipamentos
         {
             if (Salvar()) Close();
         }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
