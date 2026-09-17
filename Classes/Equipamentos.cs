@@ -17,6 +17,18 @@ namespace LocacaoEquipamentos.Classes
 
         public TipoEquipamentoEnum TipoEquipamento { get; private set; }
 
+        // Especificos
+
+        public decimal Voltagem { get; private set; }
+
+        public int NumeroSerie { get; private set; }
+
+        public string Fabricante { get; private set; }
+
+        public decimal Peso { get; private set; }
+
+        public bool OperadorEspecializado { get; private set; }
+
         public decimal GetMultaDiaria()
         {
             return TiposEquipamentos.GetMultaDiaria(TipoEquipamento);

@@ -68,6 +68,12 @@
     <Compile Include="Enums\SituacaoLocacaoEnum.cs" />
     <Compile Include="Enums\TipoEquipamentoEnum.cs" />
     <Compile Include="Enums\TipoPessoaEnum.cs" />
+    <Compile Include="Forms\AtualizaEquipamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AtualizaEquipamentos.Designer.cs">
+      <DependentUpon>AtualizaEquipamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormAtualizaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,9 +110,16 @@
     <Compile Include="Migrations\202609162347048_locacao03.Designer.cs">
       <DependentUpon>202609162347048_locacao03.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202609171403552_locacao04.cs" />
+    <Compile Include="Migrations\202609171403552_locacao04.Designer.cs">
+      <DependentUpon>202609171403552_locacao04.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AtualizaEquipamentos.resx">
+      <DependentUpon>AtualizaEquipamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAtualizaCliente.resx">
       <DependentUpon>FormAtualizaCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202609162347048_locacao03.resx">
       <DependentUpon>202609162347048_locacao03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202609171403552_locacao04.resx">
+      <DependentUpon>202609171403552_locacao04.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
