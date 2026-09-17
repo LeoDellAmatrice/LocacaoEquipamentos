@@ -68,11 +68,11 @@
     <Compile Include="Enums\SituacaoLocacaoEnum.cs" />
     <Compile Include="Enums\TipoEquipamentoEnum.cs" />
     <Compile Include="Enums\TipoPessoaEnum.cs" />
-    <Compile Include="Forms\AtualizaEquipamentos.cs">
+    <Compile Include="Forms\FormAtualizaEquipamentos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AtualizaEquipamentos.Designer.cs">
-      <DependentUpon>AtualizaEquipamentos.cs</DependentUpon>
+    <Compile Include="Forms\FormAtualizaEquipamentos.Designer.cs">
+      <DependentUpon>FormAtualizaEquipamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormAtualizaCliente.cs">
       <SubType>Form</SubType>
@@ -117,8 +117,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AtualizaEquipamentos.resx">
-      <DependentUpon>AtualizaEquipamentos.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormAtualizaEquipamentos.resx">
+      <DependentUpon>FormAtualizaEquipamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAtualizaCliente.resx">
       <DependentUpon>FormAtualizaCliente.cs</DependentUpon>

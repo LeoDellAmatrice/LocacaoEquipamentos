@@ -1,6 +1,8 @@
 ﻿using LocacaoEquipamentos.Classes;
 using LocacaoEquipamentos.Enums;
+using LocacaoEquipamentos.Forms;
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -97,7 +99,13 @@ namespace LocacaoEquipamentos
 
         private void BtnIncluir_Click(object sender, EventArgs e)
         {
+            var idEquipamento = 0;
+            using (var form = new FormAtualizaEquipamentos(idEquipamento, RequestEnum.Incluir))
+            {
+                form.ShowDialog();
+            }
 
+            GetDataEquipamentos();
         }
 
         private void BtnAlterar_Click(object sender, EventArgs e)
