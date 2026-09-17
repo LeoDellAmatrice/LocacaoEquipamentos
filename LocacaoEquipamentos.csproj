@@ -68,28 +68,28 @@
     <Compile Include="Enums\SituacaoLocacaoEnum.cs" />
     <Compile Include="Enums\TipoEquipamentoEnum.cs" />
     <Compile Include="Enums\TipoPessoaEnum.cs" />
-    <Compile Include="FormAtualizaCliente.cs">
+    <Compile Include="Forms\FormAtualizaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAtualizaCliente.Designer.cs">
+    <Compile Include="Forms\FormAtualizaCliente.Designer.cs">
       <DependentUpon>FormAtualizaCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMenu.cs">
+    <Compile Include="Forms\FormMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMenu.Designer.cs">
+    <Compile Include="Forms\FormMenu.Designer.cs">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMostraClientes.cs">
+    <Compile Include="Forms\FormMostraClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMostraClientes.Designer.cs">
+    <Compile Include="Forms\FormMostraClientes.Designer.cs">
       <DependentUpon>FormMostraClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMostraEquipamentos.cs">
+    <Compile Include="Forms\FormMostraEquipamentos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMostraEquipamentos.Designer.cs">
+    <Compile Include="Forms\FormMostraEquipamentos.Designer.cs">
       <DependentUpon>FormMostraEquipamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202609132042021_locacao01.cs" />
@@ -107,16 +107,16 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAtualizaCliente.resx">
+    <EmbeddedResource Include="Forms\FormAtualizaCliente.resx">
       <DependentUpon>FormAtualizaCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMenu.resx">
+    <EmbeddedResource Include="Forms\FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMostraClientes.resx">
+    <EmbeddedResource Include="Forms\FormMostraClientes.resx">
       <DependentUpon>FormMostraClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMostraEquipamentos.resx">
+    <EmbeddedResource Include="Forms\FormMostraEquipamentos.resx">
       <DependentUpon>FormMostraEquipamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202609132042021_locacao01.resx">
