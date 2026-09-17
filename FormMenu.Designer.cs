@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.BtnClientes = new System.Windows.Forms.Button();
+            this.BtnEquipamentos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnClientes
@@ -42,11 +43,23 @@
             this.BtnClientes.UseVisualStyleBackColor = true;
             this.BtnClientes.Click += new System.EventHandler(this.BtnClientes_Click);
             // 
+            // BtnEquipamentos
+            // 
+            this.BtnEquipamentos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEquipamentos.Location = new System.Drawing.Point(12, 140);
+            this.BtnEquipamentos.Name = "BtnEquipamentos";
+            this.BtnEquipamentos.Size = new System.Drawing.Size(174, 45);
+            this.BtnEquipamentos.TabIndex = 1;
+            this.BtnEquipamentos.Text = "Equipamentos";
+            this.BtnEquipamentos.UseVisualStyleBackColor = true;
+            this.BtnEquipamentos.Click += new System.EventHandler(this.BtnEquipamentos_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnEquipamentos);
             this.Controls.Add(this.BtnClientes);
             this.Name = "FormMenu";
             this.Text = "Menu";
@@ -57,6 +70,7 @@
         #endregion
 
         private System.Windows.Forms.Button BtnClientes;
+        private System.Windows.Forms.Button BtnEquipamentos;
     }
 }
 

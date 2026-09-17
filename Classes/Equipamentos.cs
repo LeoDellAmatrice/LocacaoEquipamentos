@@ -15,7 +15,12 @@ namespace LocacaoEquipamentos.Classes
 
         public SituacaoEquipamentoEnum SituacaoEquipamento { get; private set; }
 
-        public TiposEquipamentos TipoEquipamento { get; private set; }
+        public TipoEquipamentoEnum TipoEquipamento { get; private set; }
+
+        public decimal GetMultaDiaria()
+        {
+            return TiposEquipamentos.GetMultaDiaria(TipoEquipamento);
+        }
 
 
 

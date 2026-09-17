@@ -9,9 +9,12 @@ namespace LocacaoEquipamentos.Classes
         
         public DbSet<Clientes> Clientes { get; set; }
 
+        public DbSet<Equipamentos> Equipamentos { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ClientesMap());
+            modelBuilder.Configurations.Add(new EquipamentosMap());
         }
     }
 }

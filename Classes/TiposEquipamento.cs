@@ -2,32 +2,22 @@
 
 namespace LocacaoEquipamentos.Classes
 {
-    public class TiposEquipamentos
+    public static class TiposEquipamentos
     {
-        public TipoEquipamentoEnum TipoEquipamento { get; private set; }
-
-        public decimal MultaDiaria { get; set; }
-
-        public TiposEquipamentos(TipoEquipamentoEnum tipoEquipamento)
+        public static decimal GetMultaDiaria(TipoEquipamentoEnum tipoEquipamento)
         {
-            TipoEquipamento = tipoEquipamento;
-
-            SetMultaDiaria();
-        }
-
-        private void SetMultaDiaria()
-        {
-            switch (TipoEquipamento)
+            switch (tipoEquipamento)
             {
                 case TipoEquipamentoEnum.Ferramenta:
-                    MultaDiaria = 0.20m;
-                    break;
+                    return 0.20m;
+
                 case TipoEquipamentoEnum.Informatica:
-                    MultaDiaria = 0.30m;
-                    break;
+                    return 0.30m;
+
                 case TipoEquipamentoEnum.MaquinaPesada:
-                    MultaDiaria = 0.40m;
-                    break;
+                    return 0.40m;
+                default:
+                    return 0;
             }
         }
     }

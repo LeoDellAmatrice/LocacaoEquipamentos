@@ -2,7 +2,7 @@
 
 namespace LocacaoEquipamentos.Classes.DataBase
 {
-    internal class ClientesMap : EntityTypeConfiguration<Clientes>
+    public class ClientesMap : EntityTypeConfiguration<Clientes>
     {
         public ClientesMap()
         {

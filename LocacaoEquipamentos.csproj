@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Classes\Clientes.cs" />
     <Compile Include="Classes\DataBase\ClientesMap.cs" />
+    <Compile Include="Classes\DataBase\EquipamentosMap.cs" />
     <Compile Include="Classes\DataContext.cs" />
     <Compile Include="Classes\Equipamentos.cs" />
     <Compile Include="Classes\Locacao.cs" />
@@ -85,9 +86,23 @@
     <Compile Include="FormMostraClientes.Designer.cs">
       <DependentUpon>FormMostraClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMostraEquipamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMostraEquipamentos.Designer.cs">
+      <DependentUpon>FormMostraEquipamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202609132042021_locacao01.cs" />
     <Compile Include="Migrations\202609132042021_locacao01.Designer.cs">
       <DependentUpon>202609132042021_locacao01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202609162324259_locacao02.cs" />
+    <Compile Include="Migrations\202609162324259_locacao02.Designer.cs">
+      <DependentUpon>202609162324259_locacao02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202609162347048_locacao03.cs" />
+    <Compile Include="Migrations\202609162347048_locacao03.Designer.cs">
+      <DependentUpon>202609162347048_locacao03.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -101,8 +116,17 @@
     <EmbeddedResource Include="FormMostraClientes.resx">
       <DependentUpon>FormMostraClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormMostraEquipamentos.resx">
+      <DependentUpon>FormMostraEquipamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202609132042021_locacao01.resx">
       <DependentUpon>202609132042021_locacao01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202609162324259_locacao02.resx">
+      <DependentUpon>202609162324259_locacao02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202609162347048_locacao03.resx">
+      <DependentUpon>202609162347048_locacao03.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

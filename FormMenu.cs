@@ -24,5 +24,13 @@ namespace LocacaoEquipamentos
                 form.ShowDialog();
             }
         }
+
+        private void BtnEquipamentos_Click(object sender, EventArgs e)
+        {
+            using (var form = new FormMostraEquipamentos())
+            {
+                form.ShowDialog();
+            }
+        }
     }
 }
