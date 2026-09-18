@@ -34,7 +34,21 @@ namespace LocacaoEquipamentos.Classes
             return TiposEquipamentos.GetMultaDiaria(TipoEquipamento);
         }
 
+        internal void Excluir(DataContext context, int idEquipamento)
+        {
+            IdEquipamento = idEquipamento;
 
+            var entry = context.Entry(this);
 
+            if (entry.State == System.Data.Entity.EntityState.Detached) context.Equipamentos.Attach(this);
+
+            context.Equipamentos.Remove(this);
+            context.SaveChanges();
+        }
+
+        internal Equipamentos GetEquipamentoById(int idEquipamento, DataContext context)
+        {
+            return context.Equipamentos.Find(idEquipamento);
+        }
     }
 }

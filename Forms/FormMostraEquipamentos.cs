@@ -110,12 +110,28 @@ namespace LocacaoEquipamentos
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow is null) return;
 
+            var idEquipamento = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdEquipamento"].Value);
+            using (var form = new FormAtualizaEquipamentos(idEquipamento, RequestEnum.Alterar))
+            {
+                form.ShowDialog();
+            }
+
+            GetDataEquipamentos();
         }
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow is null) return;
 
+            var idEquipamento = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdEquipamento"].Value);
+            using (var form = new FormAtualizaEquipamentos(idEquipamento, RequestEnum.Excluir))
+            {
+                form.ShowDialog();
+            }
+
+            GetDataEquipamentos();
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)

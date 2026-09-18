@@ -34,24 +34,24 @@
             this.BtnExcluir = new System.Windows.Forms.Button();
             this.tabControlTiposEquipamentos = new System.Windows.Forms.TabControl();
             this.tabPageTipoFerramenta = new System.Windows.Forms.TabPage();
-            this.tabPageTipoInformatica = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.TboxVoltagem = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.TboxNumeroSerie = new System.Windows.Forms.TextBox();
+            this.tabPageTipoInformatica = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.TboxFabricante = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TboxNumeroSerie = new System.Windows.Forms.TextBox();
             this.tabPageTipoMaquinaPesada = new System.Windows.Forms.TabPage();
+            this.checkedListBoxOperadorEspecializado = new System.Windows.Forms.CheckedListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.TboxPeso = new System.Windows.Forms.TextBox();
-            this.checkedListBoxOperadorEspecializado = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControlTiposEquipamentos.SuspendLayout();
             this.tabPageTipoFerramenta.SuspendLayout();
-            this.tabPageTipoInformatica.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.tabPageTipoInformatica.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabPageTipoMaquinaPesada.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
@@ -132,22 +132,10 @@
             this.tabPageTipoFerramenta.Location = new System.Drawing.Point(4, 22);
             this.tabPageTipoFerramenta.Name = "tabPageTipoFerramenta";
             this.tabPageTipoFerramenta.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTipoFerramenta.Size = new System.Drawing.Size(167, 158);
+            this.tabPageTipoFerramenta.Size = new System.Drawing.Size(165, 133);
             this.tabPageTipoFerramenta.TabIndex = 0;
             this.tabPageTipoFerramenta.Text = "Ferramenta";
             this.tabPageTipoFerramenta.UseVisualStyleBackColor = true;
-            // 
-            // tabPageTipoInformatica
-            // 
-            this.tabPageTipoInformatica.Controls.Add(this.groupBox3);
-            this.tabPageTipoInformatica.Controls.Add(this.groupBox2);
-            this.tabPageTipoInformatica.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTipoInformatica.Name = "tabPageTipoInformatica";
-            this.tabPageTipoInformatica.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTipoInformatica.Size = new System.Drawing.Size(165, 133);
-            this.tabPageTipoInformatica.TabIndex = 1;
-            this.tabPageTipoInformatica.Text = "Informática";
-            this.tabPageTipoInformatica.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -168,24 +156,17 @@
             this.TboxVoltagem.TabIndex = 0;
             this.TboxVoltagem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupBox2
+            // tabPageTipoInformatica
             // 
-            this.groupBox2.Controls.Add(this.TboxNumeroSerie);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(150, 56);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Número Série";
-            // 
-            // TboxNumeroSerie
-            // 
-            this.TboxNumeroSerie.Location = new System.Drawing.Point(6, 19);
-            this.TboxNumeroSerie.Name = "TboxNumeroSerie";
-            this.TboxNumeroSerie.ReadOnly = true;
-            this.TboxNumeroSerie.Size = new System.Drawing.Size(138, 20);
-            this.TboxNumeroSerie.TabIndex = 0;
-            this.TboxNumeroSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabPageTipoInformatica.Controls.Add(this.groupBox3);
+            this.tabPageTipoInformatica.Controls.Add(this.groupBox2);
+            this.tabPageTipoInformatica.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTipoInformatica.Name = "tabPageTipoInformatica";
+            this.tabPageTipoInformatica.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTipoInformatica.Size = new System.Drawing.Size(165, 133);
+            this.tabPageTipoInformatica.TabIndex = 1;
+            this.tabPageTipoInformatica.Text = "Informática";
+            this.tabPageTipoInformatica.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -206,6 +187,25 @@
             this.TboxFabricante.TabIndex = 0;
             this.TboxFabricante.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.TboxNumeroSerie);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(150, 56);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Número Série";
+            // 
+            // TboxNumeroSerie
+            // 
+            this.TboxNumeroSerie.Location = new System.Drawing.Point(6, 19);
+            this.TboxNumeroSerie.Name = "TboxNumeroSerie";
+            this.TboxNumeroSerie.ReadOnly = true;
+            this.TboxNumeroSerie.Size = new System.Drawing.Size(138, 20);
+            this.TboxNumeroSerie.TabIndex = 0;
+            this.TboxNumeroSerie.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // tabPageTipoMaquinaPesada
             // 
             this.tabPageTipoMaquinaPesada.Controls.Add(this.checkedListBoxOperadorEspecializado);
@@ -213,10 +213,21 @@
             this.tabPageTipoMaquinaPesada.Location = new System.Drawing.Point(4, 22);
             this.tabPageTipoMaquinaPesada.Name = "tabPageTipoMaquinaPesada";
             this.tabPageTipoMaquinaPesada.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTipoMaquinaPesada.Size = new System.Drawing.Size(167, 158);
+            this.tabPageTipoMaquinaPesada.Size = new System.Drawing.Size(165, 133);
             this.tabPageTipoMaquinaPesada.TabIndex = 2;
             this.tabPageTipoMaquinaPesada.Text = "Máquina Pesada";
             this.tabPageTipoMaquinaPesada.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBoxOperadorEspecializado
+            // 
+            this.checkedListBoxOperadorEspecializado.Enabled = false;
+            this.checkedListBoxOperadorEspecializado.FormattingEnabled = true;
+            this.checkedListBoxOperadorEspecializado.Items.AddRange(new object[] {
+            "Operador Especializado\t"});
+            this.checkedListBoxOperadorEspecializado.Location = new System.Drawing.Point(6, 68);
+            this.checkedListBoxOperadorEspecializado.Name = "checkedListBoxOperadorEspecializado";
+            this.checkedListBoxOperadorEspecializado.Size = new System.Drawing.Size(150, 19);
+            this.checkedListBoxOperadorEspecializado.TabIndex = 3;
             // 
             // groupBox4
             // 
@@ -237,16 +248,6 @@
             this.TboxPeso.TabIndex = 0;
             this.TboxPeso.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // checkedListBoxOperadorEspecializado
-            // 
-            this.checkedListBoxOperadorEspecializado.FormattingEnabled = true;
-            this.checkedListBoxOperadorEspecializado.Items.AddRange(new object[] {
-            "Operador Especializado\t"});
-            this.checkedListBoxOperadorEspecializado.Location = new System.Drawing.Point(6, 68);
-            this.checkedListBoxOperadorEspecializado.Name = "checkedListBoxOperadorEspecializado";
-            this.checkedListBoxOperadorEspecializado.Size = new System.Drawing.Size(150, 19);
-            this.checkedListBoxOperadorEspecializado.TabIndex = 3;
-            // 
             // FormMostraEquipamentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,13 +263,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabControlTiposEquipamentos.ResumeLayout(false);
             this.tabPageTipoFerramenta.ResumeLayout(false);
-            this.tabPageTipoInformatica.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.tabPageTipoInformatica.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabPageTipoMaquinaPesada.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
