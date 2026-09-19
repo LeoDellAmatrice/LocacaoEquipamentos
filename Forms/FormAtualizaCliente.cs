@@ -104,10 +104,10 @@ namespace LocacaoEquipamentos
                 switch (cliente.TipoPessoa)
                 {
                     case TipoPessoaEnum.Fisica:
-                        cliente.SetPessoaFisica(Convert.ToInt32("0"+TboxIdCliente.Text), TboxNome.Text, TboxTelefone.Text, TboxEmail.Text, TboxCPF.Text);
+                        cliente.SetPessoa(Convert.ToInt32("0"+TboxIdCliente.Text), TboxNome.Text, TboxTelefone.Text, TboxEmail.Text, TboxCPF.Text);
                         break;
                     case TipoPessoaEnum.Juridica:
-                        cliente.SetPessoaJuridica(Convert.ToInt32("0" + TboxIdCliente.Text), TboxRazaoSocial.Text, TboxNomeFantasia.Text, TboxTelefone.Text, TboxEmail.Text, TboxCNPJ.Text);
+                        cliente.SetPessoa(Convert.ToInt32("0" + TboxIdCliente.Text), TboxRazaoSocial.Text, TboxNomeFantasia.Text, TboxTelefone.Text, TboxEmail.Text, TboxCNPJ.Text);
                         break;
                 }
 

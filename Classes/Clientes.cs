@@ -29,7 +29,7 @@ namespace LocacaoEquipamentos.Classes.DataBase
             TipoPessoa = tipoPessoa;
         }
 
-        public void SetPessoaFisica(int idCliente, string nome, string telefone, string email, string cpf)
+        public void SetPessoa(int idCliente, string nome, string telefone, string email, string cpf)
         {
             if (TipoPessoa != TipoPessoaEnum.Fisica) throw new Exception("Tipo pessoa inválido");
 
@@ -40,7 +40,7 @@ namespace LocacaoEquipamentos.Classes.DataBase
             Cpf = cpf;
         }
 
-        public void SetPessoaJuridica(int idCliente, string razaoSocial, string nomeFantasia, string telefone, string email, string cnpj)
+        public void SetPessoa(int idCliente, string razaoSocial, string nomeFantasia, string telefone, string email, string cnpj)
         {
             if (TipoPessoa != TipoPessoaEnum.Juridica) throw new Exception("Tipo pessoa inválido");
 
