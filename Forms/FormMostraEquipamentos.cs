@@ -128,7 +128,7 @@ namespace LocacaoEquipamentos
             var idEquipamento = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdEquipamento"].Value);
             using (var form = new FormAtualizaEquipamentos(idEquipamento, RequestEnum.Excluir))
             {
-                form.ShowDialog();
+                form.Close();
             }
 
             GetDataEquipamentos();

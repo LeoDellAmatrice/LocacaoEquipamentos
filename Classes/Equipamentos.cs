@@ -1,5 +1,6 @@
 ﻿using LocacaoEquipamentos.Enums;
 using System;
+using System.Threading;
 
 namespace LocacaoEquipamentos.Classes
 {
@@ -34,6 +35,20 @@ namespace LocacaoEquipamentos.Classes
             return TiposEquipamentos.GetMultaDiaria(TipoEquipamento);
         }
 
+        public void SetEquipamentoBase(int idEquipamento, string descricao, decimal valorDiaria, DateTime dataAquisicao, SituacaoEquipamentoEnum situacaoEquipamento)
+        {
+            IdEquipamento = idEquipamento;
+            Descricao = descricao;
+            ValorDiaria = valorDiaria;
+            DataAquisicao = dataAquisicao;
+            SituacaoEquipamento = situacaoEquipamento;
+        }
+
+        public void SetTipoEquipamento(TipoEquipamentoEnum tipoEquipamento)
+        {
+            TipoEquipamento = tipoEquipamento;
+        }
+
         internal void Excluir(DataContext context, int idEquipamento)
         {
             IdEquipamento = idEquipamento;
@@ -49,6 +64,23 @@ namespace LocacaoEquipamentos.Classes
         internal Equipamentos GetEquipamentoById(int idEquipamento, DataContext context)
         {
             return context.Equipamentos.Find(idEquipamento);
+        }
+
+        internal void SetEspecifico(decimal voltagem)
+        {
+            Voltagem = voltagem;
+        }
+
+        internal void SetEspecifico(int numeroSerie, string fabricante)
+        {
+            NumeroSerie = numeroSerie;
+            Fabricante = fabricante;
+        }
+
+        internal void SetEspecifico(decimal peso, bool operadorEspecializado)
+        {
+            Peso = peso;
+            OperadorEspecializado = operadorEspecializado;
         }
     }
 }
