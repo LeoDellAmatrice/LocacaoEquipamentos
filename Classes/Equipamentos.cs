@@ -1,6 +1,5 @@
 ﻿using LocacaoEquipamentos.Enums;
 using System;
-using System.Threading;
 
 namespace LocacaoEquipamentos.Classes
 {
@@ -35,6 +34,16 @@ namespace LocacaoEquipamentos.Classes
             return TiposEquipamentos.GetMultaDiaria(TipoEquipamento);
         }
 
+        public void Alugar()
+        {
+            if (SituacaoEquipamento != SituacaoEquipamentoEnum.Disponivel)
+            {
+                throw new Exception("Não é possivel alugar materiais com situação diferente de Disponivel.");
+            }
+
+            SituacaoEquipamento = SituacaoEquipamentoEnum.Alugado;
+        }
+
         public void SetEquipamentoBase(int idEquipamento, string descricao, decimal valorDiaria, DateTime dataAquisicao, SituacaoEquipamentoEnum situacaoEquipamento)
         {
             IdEquipamento = idEquipamento;
@@ -63,7 +72,7 @@ namespace LocacaoEquipamentos.Classes
 
         internal Equipamentos GetEquipamentoById(int idEquipamento, DataContext context)
         {
-            return context.Equipamentos.Find(idEquipamento);
+            return context.Equipamentos.Find(idEquipamento) ?? throw new Exception("Erro ao buscar o equipamento com o Id: " + idEquipamento.ToString());
         }
 
         internal void SetEspecifico(decimal voltagem)

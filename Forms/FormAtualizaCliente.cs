@@ -2,6 +2,7 @@
 using LocacaoEquipamentos.Classes.DataBase;
 using LocacaoEquipamentos.Enums;
 using System;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace LocacaoEquipamentos
@@ -29,8 +30,6 @@ namespace LocacaoEquipamentos
                     Excluir(idCliente);
                     break;
             }
-
-            
         }
 
         private void InicializaCampos()
@@ -42,30 +41,29 @@ namespace LocacaoEquipamentos
 
         private void ExibeCamposTipoPessoa()
         {
+            TabPagePessoaJuridica.Parent = null;
+            TabPagePessoaFisica.Parent = null;
+
             switch ((TipoPessoaEnum)CbTipoPessoa.SelectedItem)
             {
                 case TipoPessoaEnum.Fisica:
-                    TabPagePessoaJuridica.Parent = null;
                     TabPagePessoaFisica.Parent = TabControlTipoPessoa;
                     break;
                 case TipoPessoaEnum.Juridica:
                     TabPagePessoaJuridica.Parent = TabControlTipoPessoa;
-                    TabPagePessoaFisica.Parent = null;
                     break;
             }
         }
 
         private void BuscarCliente(int idCliente)
         {
-            TboxIdCliente.Text = idCliente.ToString();
-
             try
             {
                 using (var context = new DataContext())
                 {
-                    var cliente = context.Clientes.Find(idCliente) ?? throw new Exception("Erro ao Encontrar o cliente.");
+                    var cliente = new Clientes();
 
-                    CarregaCamposCliente(cliente);
+                    CarregaCamposCliente(cliente.GetClienteById(idCliente, context));
                 }
             }
             catch (Exception ex)
@@ -76,6 +74,8 @@ namespace LocacaoEquipamentos
 
         private void CarregaCamposCliente(Clientes cliente)
         {
+            TboxIdCliente.Text = cliente.IdCliente.ToString();
+
             CbTipoPessoa.SelectedItem = cliente.TipoPessoa;
             ExibeCamposTipoPessoa();
 
@@ -88,6 +88,29 @@ namespace LocacaoEquipamentos
             TboxEmail.Text = cliente.Email;
         }
 
+        private void ValidarCampos()
+        {
+            ValidarCamposGeral();
+
+            if ((TipoPessoaEnum)CbTipoPessoa.SelectedItem == TipoPessoaEnum.Fisica) ValidarCamposFisica();
+            if ((TipoPessoaEnum)CbTipoPessoa.SelectedItem == TipoPessoaEnum.Juridica) ValidarCamposJuridica();
+
+            void ValidarCamposGeral()
+            {
+
+            }
+
+            void ValidarCamposFisica()
+            {
+
+            }
+
+            void ValidarCamposJuridica()
+            {
+
+            }
+        }
+
         private void CbTipoPessoa_SelectionChangeCommitted(object sender, EventArgs e)
         {
             ExibeCamposTipoPessoa();
@@ -97,6 +120,8 @@ namespace LocacaoEquipamentos
         {
             try
             {
+                ValidarCampos();
+
                 var cliente = new Clientes();
 
                 cliente.SetTipoPessoa((TipoPessoaEnum)CbTipoPessoa.SelectedItem);
@@ -116,10 +141,10 @@ namespace LocacaoEquipamentos
                     switch (LocalRequest)
                     {
                         case RequestEnum.Incluir:
-                            context.Clientes.Add(cliente);
+                            cliente.Incluir(context);
                             break;
                         case RequestEnum.Alterar:
-                            context.Entry(cliente).State = System.Data.Entity.EntityState.Modified;
+                            cliente.Alterar(context);
                             break;
                     }
 

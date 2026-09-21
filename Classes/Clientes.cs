@@ -1,5 +1,6 @@
 ﻿using LocacaoEquipamentos.Enums;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace LocacaoEquipamentos.Classes.DataBase
@@ -50,6 +51,33 @@ namespace LocacaoEquipamentos.Classes.DataBase
             Telefone = telefone;
             Email = email;
             Cnpj = cnpj;
+        }
+
+        public decimal GetDesconto()
+        {
+            if (TipoPessoa == TipoPessoaEnum.Juridica) return 0.05m;
+
+            return 0m;
+        }
+
+        public Clientes GetClienteById(int idCliente, DataContext context)
+        {
+            return context.Clientes.Find(idCliente) ?? throw new Exception("Erro ao buscar o cliente com o Id: " + IdCliente.ToString());
+        }
+
+        public List<Clientes> GetClientes(DataContext context)
+        {
+            return (from clientes in context.Clientes select clientes).ToList();
+        }
+
+        public void Incluir(DataContext context)
+        {
+            context.Clientes.Add(this);
+        }
+
+        public void Alterar(DataContext context)
+        {
+            context.Entry(this).State = System.Data.Entity.EntityState.Modified;
         }
 
         public void Excluir(DataContext context, int idCliente)

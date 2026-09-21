@@ -1,8 +1,9 @@
 ﻿using LocacaoEquipamentos.Classes;
+using LocacaoEquipamentos.Classes.DataBase;
 using LocacaoEquipamentos.Enums;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace LocacaoEquipamentos
@@ -23,13 +24,12 @@ namespace LocacaoEquipamentos
             {
                 dataGridView1.Rows.Clear();
 
-                var lista = (from clientes in context.Clientes select clientes).ToList();
+                List<Clientes> lista = new Clientes().GetClientes(context);
 
                 foreach (var item in lista) 
                 {
                     dataGridView1.Rows.Add(item.IdCliente, item.TipoPessoa, item.Nome, item.RazaoSocial, item.NomeFantasia);
                 }
-
             }
         }
 
