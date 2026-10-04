@@ -28,6 +28,8 @@ namespace LocacaoEquipamentos.Shareds.Extensions
                         equipamento.Peso,
                         equipamento.OperadorEspecializado
                     }).ToList();
+
+            ConfiguraBrowseEquipamentos(dataGridViewEquipamentos);
         }
 
         public static void ConfiguraBrowseEquipamentos(this DataGridView dataGridViewEquipamentos)

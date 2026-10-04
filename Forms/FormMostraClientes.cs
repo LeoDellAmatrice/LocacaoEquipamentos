@@ -25,7 +25,6 @@ namespace LocacaoEquipamentos
                 List<Cliente> clientes = new Cliente().GetClientes(context);
 
                 dataGridViewClientes.SetDataSource(clientes);
-                dataGridViewClientes.ConfiguraBrowseClientes();
             }
         }
 

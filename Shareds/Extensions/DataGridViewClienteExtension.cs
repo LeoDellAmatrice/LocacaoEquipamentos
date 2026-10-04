@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 
 namespace LocacaoEquipamentos.Shareds.Extensions
@@ -22,6 +21,8 @@ namespace LocacaoEquipamentos.Shareds.Extensions
                     cliente.RazaoSocial,
                     cliente.NomeFantasia
                 }).ToList();
+
+            ConfiguraBrowseClientes(dataGridViewClientes);
         }
 
         public static void ConfiguraBrowseClientes(this DataGridView dataGridViewCliente)

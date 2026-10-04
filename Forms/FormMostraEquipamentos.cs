@@ -24,7 +24,6 @@ namespace LocacaoEquipamentos
                 List<Equipamento> equipamentos = new Equipamento().GetEquipamentos(context);
 
                 DataGridViewEquipamentos.SetDataSource(equipamentos);
-                DataGridViewEquipamentos.ConfiguraBrowseEquipamentos();
             }
         }
 
