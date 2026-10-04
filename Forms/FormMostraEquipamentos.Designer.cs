@@ -56,7 +56,7 @@
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DataGridViewEquipamentos
             // 
             this.DataGridViewEquipamentos.AllowUserToAddRows = false;
             this.DataGridViewEquipamentos.AllowUserToDeleteRows = false;
@@ -64,11 +64,11 @@
             this.DataGridViewEquipamentos.AllowUserToResizeRows = false;
             this.DataGridViewEquipamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewEquipamentos.Location = new System.Drawing.Point(12, 12);
-            this.DataGridViewEquipamentos.Name = "dataGridView1";
+            this.DataGridViewEquipamentos.Name = "DataGridViewEquipamentos";
             this.DataGridViewEquipamentos.ReadOnly = true;
             this.DataGridViewEquipamentos.Size = new System.Drawing.Size(776, 347);
             this.DataGridViewEquipamentos.TabIndex = 0;
-            this.DataGridViewEquipamentos.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.DataGridViewEquipamentos.SelectionChanged += new System.EventHandler(this.DataGridViewEquipamentos_SelectionChanged);
             // 
             // BtnIncluir
             // 

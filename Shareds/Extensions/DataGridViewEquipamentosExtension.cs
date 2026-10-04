@@ -1,10 +1,35 @@
-﻿using System.Drawing;
+﻿using LocacaoEquipamentos.Classes;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace LocacaoEquipamentos.Shareds.Extensions
 {
     public static class DataGridViewEquipamentosExtension
     {
+        public static void SetDataSource(this DataGridView dataGridViewEquipamentos, List<Equipamento> equipamentos)
+        {
+            dataGridViewEquipamentos.DataSource = null;
+
+            dataGridViewEquipamentos.DataSource = equipamentos
+                    .Select(equipamento => new
+                    {
+                        equipamento.IdEquipamento,
+                        equipamento.Descricao,
+                        equipamento.DataAquisicao,
+                        SituacaoEquipamento = equipamento.SituacaoEquipamento.GetDescription(),
+                        TipoEquipamento = equipamento.TipoEquipamento.GetDescription(),
+                        MultaDiaria = equipamento.GetMultaDiaria(),
+                        equipamento.ValorDiaria,
+                        equipamento.Voltagem,
+                        equipamento.NumeroSerie,
+                        equipamento.Fabricante,
+                        equipamento.Peso,
+                        equipamento.OperadorEspecializado
+                    }).ToList();
+        }
+
         public static void ConfiguraBrowseEquipamentos(this DataGridView dataGridViewEquipamentos)
         {
             dataGridViewEquipamentos.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9);

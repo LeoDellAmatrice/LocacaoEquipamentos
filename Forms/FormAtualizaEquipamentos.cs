@@ -59,6 +59,7 @@ namespace LocacaoEquipamentos.Forms
 
         private void InicializarCampos()
         {
+
             CbSituacao.DataSource = Enum.GetValues(typeof(SituacaoEquipamentoEnum));
             CbTipoEquipamento.DataSource = Enum.GetValues(typeof(TipoEquipamentoEnum));
 

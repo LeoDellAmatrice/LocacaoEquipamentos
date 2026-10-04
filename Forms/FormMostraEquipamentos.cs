@@ -4,8 +4,6 @@ using LocacaoEquipamentos.Forms;
 using LocacaoEquipamentos.Shareds.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace LocacaoEquipamentos
@@ -17,33 +15,16 @@ namespace LocacaoEquipamentos
             InitializeComponent();
 
             GetDataEquipamentos();
-            DataGridViewEquipamentos.ConfiguraBrowseEquipamentos();
         }
 
         private void GetDataEquipamentos()
         {
             using (var context = new DataContext())
             {
-                DataGridViewEquipamentos.DataSource = null;
-
                 List<Equipamento> equipamentos = new Equipamento().GetEquipamentos(context);
 
-                DataGridViewEquipamentos.DataSource = equipamentos
-                    .Select(equipamento => new
-                    {
-                        equipamento.IdEquipamento,
-                        equipamento.Descricao,
-                        equipamento.DataAquisicao,
-                        SituacaoEquipamento = equipamento.SituacaoEquipamento.GetDescription(),
-                        TipoEquipamento = equipamento.TipoEquipamento.GetDescription(),
-                        MultaDiaria = equipamento.GetMultaDiaria(),
-                        equipamento.ValorDiaria,
-                        equipamento.Voltagem,
-                        equipamento.NumeroSerie,
-                        equipamento.Fabricante,
-                        equipamento.Peso,
-                        equipamento.OperadorEspecializado
-                    }).ToList();
+                DataGridViewEquipamentos.SetDataSource(equipamentos);
+                DataGridViewEquipamentos.ConfiguraBrowseEquipamentos();
             }
         }
 
@@ -95,18 +76,18 @@ namespace LocacaoEquipamentos
             GetDataEquipamentos();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void DataGridViewEquipamentos_SelectionChanged(object sender, EventArgs e)
         {
 
-            TboxVoltagem.Text = (DataGridViewEquipamentos.CurrentRow.Cells["Voltagem"].Value).ToString();
+            TboxVoltagem.Text = DataGridViewEquipamentos.GetCurrentRow("Voltagem");
 
-            TboxNumeroSerie.Text = (DataGridViewEquipamentos.CurrentRow.Cells["NumeroSerie"].Value).ToString();
+            TboxNumeroSerie.Text = DataGridViewEquipamentos.GetCurrentRow("NumeroSerie");
 
-            TboxFabricante.Text = (DataGridViewEquipamentos.CurrentRow.Cells["Fabricante"].Value ?? "").ToString();
+            TboxFabricante.Text = DataGridViewEquipamentos.GetCurrentRow("Fabricante");
 
-            TboxPeso.Text = (DataGridViewEquipamentos.CurrentRow.Cells["Peso"].Value).ToString();
+            TboxPeso.Text = DataGridViewEquipamentos.GetCurrentRow("Peso");
 
-            checkedListBoxOperadorEspecializado.SetItemChecked(0, (bool)DataGridViewEquipamentos.CurrentRow.Cells["OperadorEspecializado"].Value);
+            checkedListBoxOperadorEspecializado.SetItemChecked(0, DataGridViewEquipamentos.GetCurrentRowBool("OperadorEspecializado"));
 
             tabPageTipoFerramenta.Parent = null;
             tabPageTipoInformatica.Parent = null;

@@ -1,10 +1,29 @@
-﻿using System.Drawing;
+﻿using LocacaoEquipamentos.Classes.DataBase;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Windows.Forms;
 
 namespace LocacaoEquipamentos.Shareds.Extensions
 {
     public static class DataGridViewClienteExtension
     {
+        public static void SetDataSource(this DataGridView dataGridViewClientes, List<Cliente> clientes)
+        {
+            dataGridViewClientes.DataSource = null;
+
+            dataGridViewClientes.DataSource = clientes
+                .Select(cliente => new
+                {
+                    cliente.IdCliente,
+                    TipoPessoa = cliente.TipoPessoa.GetDescription(),
+                    cliente.Nome,
+                    cliente.RazaoSocial,
+                    cliente.NomeFantasia
+                }).ToList();
+        }
+
         public static void ConfiguraBrowseClientes(this DataGridView dataGridViewCliente)
         {
             dataGridViewCliente.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9);

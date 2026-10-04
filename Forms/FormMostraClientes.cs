@@ -4,7 +4,6 @@ using LocacaoEquipamentos.Enums;
 using LocacaoEquipamentos.Shareds.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using static LocacaoEquipamentos.FormAtualizaCliente;
 
@@ -17,26 +16,16 @@ namespace LocacaoEquipamentos
             InitializeComponent();
 
             GetDataClientes();
-            dataGridViewClientes.ConfiguraBrowseClientes();
         }
 
         private void GetDataClientes()
         {
             using (var context = new DataContext())
             {
-                dataGridViewClientes.DataSource = null;
-
                 List<Cliente> clientes = new Cliente().GetClientes(context);
 
-                dataGridViewClientes.DataSource = clientes
-                    .Select(cliente => new
-                    {
-                        cliente.IdCliente,
-                        TipoPessoa = cliente.TipoPessoa.GetDescription(),
-                        cliente.Nome,
-                        cliente.RazaoSocial,
-                        cliente.NomeFantasia
-                    }).ToList();
+                dataGridViewClientes.SetDataSource(clientes);
+                dataGridViewClientes.ConfiguraBrowseClientes();
             }
         }
 
