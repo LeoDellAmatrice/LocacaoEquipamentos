@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DataGridViewEquipamentos = new System.Windows.Forms.DataGridView();
             this.BtnIncluir = new System.Windows.Forms.Button();
             this.BtnAlterar = new System.Windows.Forms.Button();
             this.BtnExcluir = new System.Windows.Forms.Button();
@@ -45,7 +45,7 @@
             this.checkedListBoxOperadorEspecializado = new System.Windows.Forms.CheckedListBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.TboxPeso = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewEquipamentos)).BeginInit();
             this.tabControlTiposEquipamentos.SuspendLayout();
             this.tabPageTipoFerramenta.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -58,17 +58,17 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 347);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.DataGridViewEquipamentos.AllowUserToAddRows = false;
+            this.DataGridViewEquipamentos.AllowUserToDeleteRows = false;
+            this.DataGridViewEquipamentos.AllowUserToOrderColumns = true;
+            this.DataGridViewEquipamentos.AllowUserToResizeRows = false;
+            this.DataGridViewEquipamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewEquipamentos.Location = new System.Drawing.Point(12, 12);
+            this.DataGridViewEquipamentos.Name = "dataGridView1";
+            this.DataGridViewEquipamentos.ReadOnly = true;
+            this.DataGridViewEquipamentos.Size = new System.Drawing.Size(776, 347);
+            this.DataGridViewEquipamentos.TabIndex = 0;
+            this.DataGridViewEquipamentos.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // BtnIncluir
             // 
@@ -257,10 +257,10 @@
             this.Controls.Add(this.BtnIncluir);
             this.Controls.Add(this.BtnAlterar);
             this.Controls.Add(this.BtnExcluir);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DataGridViewEquipamentos);
             this.Name = "FormMostraEquipamentos";
             this.Text = "FormMostraEquipamentos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewEquipamentos)).EndInit();
             this.tabControlTiposEquipamentos.ResumeLayout(false);
             this.tabPageTipoFerramenta.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -279,7 +279,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataGridViewEquipamentos;
         private System.Windows.Forms.Button BtnIncluir;
         private System.Windows.Forms.Button BtnAlterar;
         private System.Windows.Forms.Button BtnExcluir;

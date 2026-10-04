@@ -1,11 +1,11 @@
 ﻿using LocacaoEquipamentos.Enums;
 using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LocacaoEquipamentos.Classes.DataBase
 {
-    public class Clientes
+    public class Cliente
     {
         public int IdCliente { get; private set; }
 
@@ -60,23 +60,57 @@ namespace LocacaoEquipamentos.Classes.DataBase
             return 0m;
         }
 
-        public Clientes GetClienteById(int idCliente, DataContext context)
+        public Cliente GetClienteById(int idCliente, DataContext context)
         {
             return context.Clientes.Find(idCliente) ?? throw new Exception("Erro ao buscar o cliente com o Id: " + IdCliente.ToString());
         }
 
-        public List<Clientes> GetClientes(DataContext context)
+        public List<Cliente> GetClientes(DataContext context)
         {
             return (from clientes in context.Clientes select clientes).ToList();
         }
 
+        public void ValidarCampos()
+        {
+            if (TipoPessoa == TipoPessoaEnum.Fisica)
+            {
+                if (Cpf.Length != 11) throw new Exception("CPF Inválido");
+
+                if (Nome.Length == 0) throw new Exception("Campo Nome vazio");
+
+                return;
+            }
+            if (Cnpj.Length != 14) throw new Exception("CNPJ Inválido");
+        }
+
         public void Incluir(DataContext context)
         {
+            VerificaCpfCnpj(context);
             context.Clientes.Add(this);
+        }
+
+        private void VerificaCpfCnpj(DataContext context)
+        {
+            if (TipoPessoa == TipoPessoaEnum.Fisica)
+            {
+                if (context.Clientes.Where(u => (u.TipoPessoa == TipoPessoaEnum.Fisica) && (u.Cpf == Cpf) && (u.IdCliente != IdCliente)).Count() > 0)
+                {
+                    throw new Exception("Não é possivel incluir clientes com CPF ou CNPJ já cadastrados.");
+                }
+            }
+
+            if (TipoPessoa == TipoPessoaEnum.Juridica)
+            {
+                if (context.Clientes.Where(u => u.TipoPessoa == TipoPessoaEnum.Juridica && (u.Cnpj == Cnpj) && (u.IdCliente != IdCliente)).Count() > 0)
+                {
+                    throw new Exception("Não é possivel incluir clientes com CPF ou CNPJ já cadastrados.");
+                }
+            }
         }
 
         public void Alterar(DataContext context)
         {
+            VerificaCpfCnpj(context);
             context.Entry(this).State = System.Data.Entity.EntityState.Modified;
         }
 

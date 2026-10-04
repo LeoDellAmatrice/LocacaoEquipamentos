@@ -2,7 +2,7 @@
 
 namespace LocacaoEquipamentos.Classes.DataBase
 {
-    public class EquipamentosMap : EntityTypeConfiguration<Equipamentos>
+    public class EquipamentosMap : EntityTypeConfiguration<Equipamento>
     {
         public EquipamentosMap()
         {

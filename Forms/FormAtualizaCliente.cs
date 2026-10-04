@@ -1,40 +1,55 @@
 ﻿using LocacaoEquipamentos.Classes;
 using LocacaoEquipamentos.Classes.DataBase;
 using LocacaoEquipamentos.Enums;
+using LocacaoEquipamentos.Shareds.Extensions;
 using System;
-using System.Drawing.Text;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace LocacaoEquipamentos
 {
     public partial class FormAtualizaCliente : Form
     {
-        private RequestEnum LocalRequest { get; set; }
-        public FormAtualizaCliente(int idCliente, RequestEnum localRequest)
+        public DadosOperacaoModel DadosOperacao { get; set; }
+
+        public class DadosOperacaoModel
         {
-            LocalRequest = localRequest;
+            public int IdCliente { get; set; } = 0;
+
+            public RequestEnum LocalRequest { get; set; }
+
+        }
+        public FormAtualizaCliente(DadosOperacaoModel dadosOperacao)
+        {
+           DadosOperacao = dadosOperacao;
 
             InitializeComponent();
 
             InicializaCampos();
 
-            switch (LocalRequest)
+            switch (DadosOperacao.LocalRequest)
             {
                 case RequestEnum.Incluir:
                     break;
                 case RequestEnum.Alterar:
-                    BuscarCliente(idCliente);
+                    BuscarCliente(DadosOperacao.IdCliente);
                     break;
                 case RequestEnum.Excluir:
-                    BuscarCliente(idCliente);
-                    Excluir(idCliente);
+                    BuscarCliente(DadosOperacao.IdCliente);
+                    Excluir(DadosOperacao.IdCliente);
                     break;
             }
         }
 
         private void InicializaCampos()
         {
-            CbTipoPessoa.DataSource = Enum.GetValues(typeof(TipoPessoaEnum));
+            var descricoesTipoPessoa = new List<string>();
+            foreach (TipoPessoaEnum tipo in Enum.GetValues(typeof(TipoPessoaEnum)))
+            {
+                descricoesTipoPessoa.Add(tipo.GetDescription());
+            }
+
+            CbTipoPessoa.DataSource = descricoesTipoPessoa;
 
             ExibeCamposTipoPessoa();
         }
@@ -44,7 +59,7 @@ namespace LocacaoEquipamentos
             TabPagePessoaJuridica.Parent = null;
             TabPagePessoaFisica.Parent = null;
 
-            switch ((TipoPessoaEnum)CbTipoPessoa.SelectedItem)
+            switch (CbTipoPessoa.SelectedItem.ToString().ObterEnumPelaDescricao<TipoPessoaEnum>())
             {
                 case TipoPessoaEnum.Fisica:
                     TabPagePessoaFisica.Parent = TabControlTipoPessoa;
@@ -61,7 +76,7 @@ namespace LocacaoEquipamentos
             {
                 using (var context = new DataContext())
                 {
-                    var cliente = new Clientes();
+                    var cliente = new Cliente();
 
                     CarregaCamposCliente(cliente.GetClienteById(idCliente, context));
                 }
@@ -72,7 +87,7 @@ namespace LocacaoEquipamentos
             }
         }
 
-        private void CarregaCamposCliente(Clientes cliente)
+        private void CarregaCamposCliente(Cliente cliente)
         {
             TboxIdCliente.Text = cliente.IdCliente.ToString();
 
@@ -88,29 +103,6 @@ namespace LocacaoEquipamentos
             TboxEmail.Text = cliente.Email;
         }
 
-        private void ValidarCampos()
-        {
-            ValidarCamposGeral();
-
-            if ((TipoPessoaEnum)CbTipoPessoa.SelectedItem == TipoPessoaEnum.Fisica) ValidarCamposFisica();
-            if ((TipoPessoaEnum)CbTipoPessoa.SelectedItem == TipoPessoaEnum.Juridica) ValidarCamposJuridica();
-
-            void ValidarCamposGeral()
-            {
-
-            }
-
-            void ValidarCamposFisica()
-            {
-
-            }
-
-            void ValidarCamposJuridica()
-            {
-
-            }
-        }
-
         private void CbTipoPessoa_SelectionChangeCommitted(object sender, EventArgs e)
         {
             ExibeCamposTipoPessoa();
@@ -120,11 +112,9 @@ namespace LocacaoEquipamentos
         {
             try
             {
-                ValidarCampos();
+                var cliente = new Cliente();
 
-                var cliente = new Clientes();
-
-                cliente.SetTipoPessoa((TipoPessoaEnum)CbTipoPessoa.SelectedItem);
+                cliente.SetTipoPessoa(CbTipoPessoa.SelectedItem.ToString().ObterEnumPelaDescricao<TipoPessoaEnum>());
 
                 switch (cliente.TipoPessoa)
                 {
@@ -136,9 +126,11 @@ namespace LocacaoEquipamentos
                         break;
                 }
 
+                cliente.ValidarCampos();
+
                 using (var context = new DataContext())
                 {
-                    switch (LocalRequest)
+                    switch (DadosOperacao.LocalRequest)
                     {
                         case RequestEnum.Incluir:
                             cliente.Incluir(context);
@@ -166,7 +158,7 @@ namespace LocacaoEquipamentos
             {
                 using (var context = new DataContext())
                 {
-                    var cliente = new Clientes();
+                    var cliente = new Cliente();
 
                     cliente.Excluir(context, idCliente);
                 }

@@ -56,11 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Clientes.cs" />
+    <Compile Include="Classes\Cliente.cs" />
     <Compile Include="Classes\DataBase\ClientesMap.cs" />
     <Compile Include="Classes\DataBase\EquipamentosMap.cs" />
     <Compile Include="Classes\DataContext.cs" />
-    <Compile Include="Classes\Equipamentos.cs" />
+    <Compile Include="Classes\Equipamento.cs" />
     <Compile Include="Classes\Locacao.cs" />
     <Compile Include="Classes\TiposEquipamento.cs" />
     <Compile Include="Enums\RequestEnum.cs" />
@@ -117,6 +117,12 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shareds\Extensions\DataGridViewClienteExtension.cs" />
+    <Compile Include="Shareds\Extensions\DataGridViewEquipamentosExtension.cs" />
+    <Compile Include="Shareds\Extensions\EnumExtension.cs" />
+    <Compile Include="Shareds\Extensions\StringExtension.cs" />
+    <Compile Include="Shareds\Extensions\DataGridViewExtension.cs" />
+    <Compile Include="Shareds\Extensions\tabControlTiposEquipamentosExtension.cs" />
     <EmbeddedResource Include="Forms\FormAtualizaEquipamentos.resx">
       <DependentUpon>FormAtualizaEquipamentos.cs</DependentUpon>
     </EmbeddedResource>

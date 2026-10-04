@@ -1,10 +1,12 @@
 ﻿using LocacaoEquipamentos.Classes;
 using LocacaoEquipamentos.Classes.DataBase;
 using LocacaoEquipamentos.Enums;
+using LocacaoEquipamentos.Shareds.Extensions;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
+using static LocacaoEquipamentos.FormAtualizaCliente;
 
 namespace LocacaoEquipamentos
 {
@@ -14,60 +16,38 @@ namespace LocacaoEquipamentos
         {
             InitializeComponent();
 
-            ConfiguraBrowse();
             GetDataClientes();
+            dataGridViewClientes.ConfiguraBrowseClientes();
         }
 
         private void GetDataClientes()
         {
             using (var context = new DataContext())
             {
-                dataGridView1.Rows.Clear();
+                dataGridViewClientes.DataSource = null;
 
-                List<Clientes> lista = new Clientes().GetClientes(context);
+                List<Cliente> clientes = new Cliente().GetClientes(context);
 
-                foreach (var item in lista) 
-                {
-                    dataGridView1.Rows.Add(item.IdCliente, item.TipoPessoa, item.Nome, item.RazaoSocial, item.NomeFantasia);
-                }
+                dataGridViewClientes.DataSource = clientes
+                    .Select(cliente => new
+                    {
+                        cliente.IdCliente,
+                        TipoPessoa = cliente.TipoPessoa.GetDescription(),
+                        cliente.Nome,
+                        cliente.RazaoSocial,
+                        cliente.NomeFantasia
+                    }).ToList();
             }
-        }
-
-        private void ConfiguraBrowse()
-        {
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9);
-            dataGridView1.DefaultCellStyle.Font = new Font("Arial", 9);
-
-            dataGridView1.Columns.Add("IdCliente", "Id");
-            dataGridView1.Columns["IdCliente"].Width = 60;
-            dataGridView1.Columns["IdCliente"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["IdCliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            dataGridView1.Columns.Add("TipoPessoa", "Física/Jurídica");
-            dataGridView1.Columns["TipoPessoa"].Width = 100;
-            dataGridView1.Columns["TipoPessoa"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["TipoPessoa"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-            dataGridView1.Columns.Add("Nome", "Nome");
-            dataGridView1.Columns["Nome"].Width = 200;
-            dataGridView1.Columns["Nome"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["Nome"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-            dataGridView1.Columns.Add("RazaoSocial", "Razão Social");
-            dataGridView1.Columns["RazaoSocial"].Width = 200;
-            dataGridView1.Columns["RazaoSocial"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["RazaoSocial"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-            dataGridView1.Columns.Add("NomeFantasia", "Nome Fantasia");
-            dataGridView1.Columns["NomeFantasia"].Width = 200;
-            dataGridView1.Columns["NomeFantasia"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns["NomeFantasia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
         }
 
         private void BtnIncluir_Click(object sender, EventArgs e)
         {
-            var idCliente = 0;
-            using (var form = new FormAtualizaCliente(idCliente, RequestEnum.Incluir))
+            var dadosOperacao = new DadosOperacaoModel
+            {
+                LocalRequest = RequestEnum.Incluir
+            };
+
+            using (var form = new FormAtualizaCliente(dadosOperacao))
             {
                 form.ShowDialog();
             }
@@ -77,10 +57,15 @@ namespace LocacaoEquipamentos
 
         private void BtnAlterar_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow is null) return;
+            if (dataGridViewClientes.CurrentRow is null) return;
 
-            var idCliente = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdCliente"].Value);
-            using (var form = new FormAtualizaCliente(idCliente, RequestEnum.Alterar))
+            var dadosOperacao = new DadosOperacaoModel
+            {
+                IdCliente = dataGridViewClientes.GetCurrentRowInt("IdCliente"),
+                LocalRequest = RequestEnum.Alterar
+            };
+
+            using (var form = new FormAtualizaCliente(dadosOperacao))
             {
                 form.ShowDialog();
             }
@@ -90,10 +75,15 @@ namespace LocacaoEquipamentos
 
         private void BtnExcluir_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow is null) return;
+            if (dataGridViewClientes.CurrentRow is null) return;
 
-            var idCliente = Convert.ToInt32(dataGridView1.CurrentRow.Cells["IdCliente"].Value);
-            using (var form = new FormAtualizaCliente(idCliente, RequestEnum.Excluir))
+            var dadosOperacao = new DadosOperacaoModel
+            {
+                IdCliente = dataGridViewClientes.GetCurrentRowInt("IdCliente"),
+                LocalRequest = RequestEnum.Excluir
+            };
+
+            using (var form = new FormAtualizaCliente(dadosOperacao))
             {
                 form.Close();
             }

@@ -1,9 +1,12 @@
-﻿using LocacaoEquipamentos.Enums;
+﻿using LocacaoEquipamentos.Classes.DataBase;
+using LocacaoEquipamentos.Enums;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LocacaoEquipamentos.Classes
 {
-    public class Equipamentos
+    public class Equipamento
     {
         public int IdEquipamento { get; private set; }
 
@@ -58,7 +61,17 @@ namespace LocacaoEquipamentos.Classes
             TipoEquipamento = tipoEquipamento;
         }
 
-        internal void Excluir(DataContext context, int idEquipamento)
+        public void Incluir(DataContext context)
+        {
+            context.Equipamentos.Add(this);
+        }
+
+        public void Alterar(DataContext context)
+        {
+            context.Entry(this).State = System.Data.Entity.EntityState.Modified;
+        }
+
+        public void Excluir(DataContext context, int idEquipamento)
         {
             IdEquipamento = idEquipamento;
 
@@ -70,23 +83,28 @@ namespace LocacaoEquipamentos.Classes
             context.SaveChanges();
         }
 
-        internal Equipamentos GetEquipamentoById(int idEquipamento, DataContext context)
+        public Equipamento GetEquipamentoById(int idEquipamento, DataContext context)
         {
             return context.Equipamentos.Find(idEquipamento) ?? throw new Exception("Erro ao buscar o equipamento com o Id: " + idEquipamento.ToString());
         }
 
-        internal void SetEspecifico(decimal voltagem)
+        public List<Equipamento> GetEquipamentos(DataContext context)
+        {
+            return (from equipamentos in context.Equipamentos select equipamentos).ToList();
+        }
+
+        public void SetEspecifico(decimal voltagem)
         {
             Voltagem = voltagem;
         }
 
-        internal void SetEspecifico(int numeroSerie, string fabricante)
+        public void SetEspecifico(int numeroSerie, string fabricante)
         {
             NumeroSerie = numeroSerie;
             Fabricante = fabricante;
         }
 
-        internal void SetEspecifico(decimal peso, bool operadorEspecializado)
+        public void SetEspecifico(decimal peso, bool operadorEspecializado)
         {
             Peso = peso;
             OperadorEspecializado = operadorEspecializado;

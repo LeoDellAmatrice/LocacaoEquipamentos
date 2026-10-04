@@ -7,25 +7,33 @@ namespace LocacaoEquipamentos.Forms
 {
     public partial class FormAtualizaEquipamentos : Form
     {
-        public RequestEnum LocalRequest { get; set; }
-        public FormAtualizaEquipamentos(int idEquipamento, RequestEnum request)
+        public class DadosOperacaoModel
         {
-            LocalRequest = request;
+            public int IdEquipamento {  get; set; }
+
+            public RequestEnum LocalRequest {  get; set; }
+        }
+
+        private DadosOperacaoModel DadosOperacao { get; set; }
+
+        public FormAtualizaEquipamentos(DadosOperacaoModel dadosOperacao)
+        {
+            DadosOperacao = dadosOperacao;
 
             InitializeComponent();
 
             InicializarCampos();
 
-            switch (LocalRequest)
+            switch (DadosOperacao.LocalRequest)
             {
                 case RequestEnum.Incluir:
                     break;
                 case RequestEnum.Alterar:
-                    BuscarEquipamento(idEquipamento);
+                    BuscarEquipamento(DadosOperacao.IdEquipamento);
                     break;
                 case RequestEnum.Excluir:
-                    BuscarEquipamento(idEquipamento);
-                    Excluir(idEquipamento);
+                    BuscarEquipamento(DadosOperacao.IdEquipamento);
+                    Excluir(DadosOperacao.IdEquipamento);
                     break;
             }
         }
@@ -36,7 +44,7 @@ namespace LocacaoEquipamentos.Forms
             {
                 using (var context = new DataContext())
                 {
-                    var equipamento = new Equipamentos();
+                    var equipamento = new Equipamento();
 
                     equipamento.Excluir(context, idEquipamento);
                 }
@@ -65,7 +73,7 @@ namespace LocacaoEquipamentos.Forms
 
                 using (var context = new DataContext())
                 {
-                    var equipamento = new Equipamentos();
+                    var equipamento = new Equipamento();
 
                     CarregaCamposEquipamento(equipamento.GetEquipamentoById(idEquipamento, context));
                 }
@@ -78,7 +86,7 @@ namespace LocacaoEquipamentos.Forms
             }
         }
 
-        private void CarregaCamposEquipamento(Equipamentos equipamento)
+        private void CarregaCamposEquipamento(Equipamento equipamento)
         {
 
             TboxDescricao.Text = equipamento.Descricao;
@@ -104,7 +112,7 @@ namespace LocacaoEquipamentos.Forms
         {
             try
             {
-                var equipamento = new Equipamentos();
+                var equipamento = new Equipamento();
 
                 equipamento.SetEquipamentoBase(Convert.ToInt32("0" + TboxIdEquipamento.Text), TboxDescricao.Text, Convert.ToDecimal(TboxValorDiaria.Text), DateTimePickerAquisicao.Value, (SituacaoEquipamentoEnum)CbSituacao.SelectedItem);
                 
@@ -126,13 +134,13 @@ namespace LocacaoEquipamentos.Forms
 
                 using (var context = new DataContext())
                 {
-                    switch (LocalRequest)
+                    switch (DadosOperacao.LocalRequest)
                     {
                         case RequestEnum.Incluir:
-                            context.Equipamentos.Add(equipamento);
+                            equipamento.Incluir(context);
                             break;
                         case RequestEnum.Alterar:
-                            context.Entry(equipamento).State = System.Data.Entity.EntityState.Modified;
+                            equipamento.Alterar(context);
                             break;
                     }
 

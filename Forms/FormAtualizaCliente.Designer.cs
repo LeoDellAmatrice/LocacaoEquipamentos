@@ -265,7 +265,7 @@
             this.groupBox1.Size = new System.Drawing.Size(142, 58);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Física / Furídica";
+            this.groupBox1.Text = "Física / Jurídica";
             // 
             // CbTipoPessoa
             // 

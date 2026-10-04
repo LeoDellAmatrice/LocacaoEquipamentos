@@ -1,8 +1,13 @@
-﻿namespace LocacaoEquipamentos.Enums
+﻿using System.ComponentModel;
+
+namespace LocacaoEquipamentos.Enums
 {
     public enum TipoPessoaEnum
     {
+        [Description("Física")]
         Fisica = 1,
+
+        [Description("Jurídica")]
         Juridica = 2,
     }
 }

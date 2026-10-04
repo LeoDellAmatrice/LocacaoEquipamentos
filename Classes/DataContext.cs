@@ -7,9 +7,9 @@ namespace LocacaoEquipamentos.Classes
     {
         public DataContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=LOCACAO;Integrated Security = True;Connect Timeout=30;Encrypt=False") { }
         
-        public DbSet<Clientes> Clientes { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
-        public DbSet<Equipamentos> Equipamentos { get; set; }
+        public DbSet<Equipamento> Equipamentos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
