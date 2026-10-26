@@ -11,10 +11,16 @@ namespace LocacaoEquipamentos.Classes
 
         public DbSet<Equipamento> Equipamentos { get; set; }
 
+        public DbSet<Locacao> Locacao { get; set; }
+
+        public DbSet<ItemLocacao> ItensLocacao { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ClientesMap());
             modelBuilder.Configurations.Add(new EquipamentosMap());
+            modelBuilder.Configurations.Add(new LocacaoMap());
+            modelBuilder.Configurations.Add(new ItemLocacaoMap());
         }
     }
 }

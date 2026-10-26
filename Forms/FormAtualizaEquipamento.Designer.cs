@@ -1,6 +1,6 @@
 ﻿namespace LocacaoEquipamentos.Forms
 {
-    partial class FormAtualizaEquipamentos
+    partial class FormAtualizaEquipamento
     {
         /// <summary>
         /// Required designer variable.

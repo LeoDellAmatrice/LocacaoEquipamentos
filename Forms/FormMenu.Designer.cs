@@ -30,6 +30,7 @@
         {
             this.BtnClientes = new System.Windows.Forms.Button();
             this.BtnEquipamentos = new System.Windows.Forms.Button();
+            this.BtnLocacoes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnClientes
@@ -54,11 +55,23 @@
             this.BtnEquipamentos.UseVisualStyleBackColor = true;
             this.BtnEquipamentos.Click += new System.EventHandler(this.BtnEquipamentos_Click);
             // 
+            // BtnLocacoes
+            // 
+            this.BtnLocacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnLocacoes.Location = new System.Drawing.Point(12, 191);
+            this.BtnLocacoes.Name = "BtnLocacoes";
+            this.BtnLocacoes.Size = new System.Drawing.Size(174, 45);
+            this.BtnLocacoes.TabIndex = 2;
+            this.BtnLocacoes.Text = "Locações";
+            this.BtnLocacoes.UseVisualStyleBackColor = true;
+            this.BtnLocacoes.Click += new System.EventHandler(this.BtnLocacoes_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnLocacoes);
             this.Controls.Add(this.BtnEquipamentos);
             this.Controls.Add(this.BtnClientes);
             this.Name = "FormMenu";
@@ -71,6 +84,7 @@
 
         private System.Windows.Forms.Button BtnClientes;
         private System.Windows.Forms.Button BtnEquipamentos;
+        private System.Windows.Forms.Button BtnLocacoes;
     }
 }
 

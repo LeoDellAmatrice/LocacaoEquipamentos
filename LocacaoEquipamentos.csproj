@@ -59,8 +59,11 @@
     <Compile Include="Classes\Cliente.cs" />
     <Compile Include="Classes\DataBase\ClientesMap.cs" />
     <Compile Include="Classes\DataBase\EquipamentosMap.cs" />
+    <Compile Include="Classes\DataBase\ItemLocacaoMap.cs" />
+    <Compile Include="Classes\DataBase\LocacaoMap.cs" />
     <Compile Include="Classes\DataContext.cs" />
     <Compile Include="Classes\Equipamento.cs" />
+    <Compile Include="Classes\ItemLocacao.cs" />
     <Compile Include="Classes\Locacao.cs" />
     <Compile Include="Classes\TiposEquipamento.cs" />
     <Compile Include="Enums\RequestEnum.cs" />
@@ -68,17 +71,23 @@
     <Compile Include="Enums\SituacaoLocacaoEnum.cs" />
     <Compile Include="Enums\TipoEquipamentoEnum.cs" />
     <Compile Include="Enums\TipoPessoaEnum.cs" />
-    <Compile Include="Forms\FormAtualizaEquipamentos.cs">
+    <Compile Include="Forms\FormAtualizaEquipamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAtualizaEquipamentos.Designer.cs">
-      <DependentUpon>FormAtualizaEquipamentos.cs</DependentUpon>
+    <Compile Include="Forms\FormAtualizaEquipamento.Designer.cs">
+      <DependentUpon>FormAtualizaEquipamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormAtualizaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormAtualizaCliente.Designer.cs">
       <DependentUpon>FormAtualizaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAtualizaLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAtualizaLocacao.Designer.cs">
+      <DependentUpon>FormAtualizaLocacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormMenu.cs">
       <SubType>Form</SubType>
@@ -98,6 +107,12 @@
     <Compile Include="Forms\FormMostraEquipamentos.Designer.cs">
       <DependentUpon>FormMostraEquipamentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormMostraLocacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormMostraLocacao.Designer.cs">
+      <DependentUpon>FormMostraLocacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202609132042021_locacao01.cs" />
     <Compile Include="Migrations\202609132042021_locacao01.Designer.cs">
       <DependentUpon>202609132042021_locacao01.cs</DependentUpon>
@@ -114,17 +129,22 @@
     <Compile Include="Migrations\202609171403552_locacao04.Designer.cs">
       <DependentUpon>202609171403552_locacao04.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202610261433460_locacao05.cs" />
+    <Compile Include="Migrations\202610261433460_locacao05.Designer.cs">
+      <DependentUpon>202610261433460_locacao05.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shareds\Extensions\DataGridViewClienteExtension.cs" />
     <Compile Include="Shareds\Extensions\DataGridViewEquipamentosExtension.cs" />
+    <Compile Include="Shareds\Extensions\DataGridViewLocacaoExtension.cs" />
     <Compile Include="Shareds\Extensions\EnumExtension.cs" />
     <Compile Include="Shareds\Extensions\StringExtension.cs" />
     <Compile Include="Shareds\Extensions\DataGridViewExtension.cs" />
     <Compile Include="Shareds\Extensions\tabControlTiposEquipamentosExtension.cs" />
-    <EmbeddedResource Include="Forms\FormAtualizaEquipamentos.resx">
-      <DependentUpon>FormAtualizaEquipamentos.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormAtualizaEquipamento.resx">
+      <DependentUpon>FormAtualizaEquipamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAtualizaCliente.resx">
       <DependentUpon>FormAtualizaCliente.cs</DependentUpon>
@@ -138,6 +158,9 @@
     <EmbeddedResource Include="Forms\FormMostraEquipamentos.resx">
       <DependentUpon>FormMostraEquipamentos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormMostraLocacao.resx">
+      <DependentUpon>FormMostraLocacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202609132042021_locacao01.resx">
       <DependentUpon>202609132042021_locacao01.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202609171403552_locacao04.resx">
       <DependentUpon>202609171403552_locacao04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202610261433460_locacao05.resx">
+      <DependentUpon>202610261433460_locacao05.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

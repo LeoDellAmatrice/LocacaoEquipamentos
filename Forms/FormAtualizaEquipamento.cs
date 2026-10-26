@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace LocacaoEquipamentos.Forms
 {
-    public partial class FormAtualizaEquipamentos : Form
+    public partial class FormAtualizaEquipamento : Form
     {
         public class DadosOperacaoModel
         {
@@ -16,7 +16,7 @@ namespace LocacaoEquipamentos.Forms
 
         private DadosOperacaoModel DadosOperacao { get; set; }
 
-        public FormAtualizaEquipamentos(DadosOperacaoModel dadosOperacao)
+        public FormAtualizaEquipamento(DadosOperacaoModel dadosOperacao)
         {
             DadosOperacao = dadosOperacao;
 
@@ -38,7 +38,7 @@ namespace LocacaoEquipamentos.Forms
             }
         }
 
-        private bool Excluir(int idEquipamento)
+        private void Excluir(int idEquipamento)
         {
             try
             {
@@ -48,12 +48,10 @@ namespace LocacaoEquipamentos.Forms
 
                     equipamento.Excluir(context, idEquipamento);
                 }
-                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return false;
             }
         }
 
@@ -74,9 +72,9 @@ namespace LocacaoEquipamentos.Forms
 
                 using (var context = new DataContext())
                 {
-                    var equipamento = new Equipamento();
+                    var equipamento = new Equipamento().GetEquipamentoById(idEquipamento, context);
 
-                    CarregaCamposEquipamento(equipamento.GetEquipamentoById(idEquipamento, context));
+                    CarregaCamposEquipamento(equipamento);
                 }
 
                 ControlTabTipoEquipamento();
@@ -92,7 +90,7 @@ namespace LocacaoEquipamentos.Forms
 
             TboxDescricao.Text = equipamento.Descricao;
             TboxValorDiaria.Text = equipamento.ValorDiaria.ToString();
-            
+
             CbSituacao.SelectedItem = equipamento.SituacaoEquipamento;
             CbTipoEquipamento.SelectedItem = equipamento.TipoEquipamento;
 

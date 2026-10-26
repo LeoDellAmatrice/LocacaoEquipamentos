@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LocacaoEquipamentos.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,14 @@ namespace LocacaoEquipamentos
         private void BtnEquipamentos_Click(object sender, EventArgs e)
         {
             using (var form = new FormMostraEquipamentos())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void BtnLocacoes_Click(object sender, EventArgs e)
+        {
+            using (var form = new FormMostraLocacao())
             {
                 form.ShowDialog();
             }

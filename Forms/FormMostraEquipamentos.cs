@@ -29,11 +29,11 @@ namespace LocacaoEquipamentos
 
         private void BtnIncluir_Click(object sender, EventArgs e)
         {
-            var dadosOperacao = new FormAtualizaEquipamentos.DadosOperacaoModel()
+            var dadosOperacao = new FormAtualizaEquipamento.DadosOperacaoModel()
             {
                 LocalRequest = RequestEnum.Incluir,
             };
-            using (var form = new FormAtualizaEquipamentos(dadosOperacao))
+            using (var form = new FormAtualizaEquipamento(dadosOperacao))
             {
                 form.ShowDialog();
             }
@@ -45,12 +45,12 @@ namespace LocacaoEquipamentos
         {
             if (DataGridViewEquipamentos.CurrentRow is null) return;
 
-            var dadosOperacao = new FormAtualizaEquipamentos.DadosOperacaoModel()
+            var dadosOperacao = new FormAtualizaEquipamento.DadosOperacaoModel()
             {
                 IdEquipamento = DataGridViewEquipamentos.GetCurrentRowInt("IdEquipamento"),
                 LocalRequest = RequestEnum.Alterar,
             };
-            using (var form = new FormAtualizaEquipamentos(dadosOperacao))
+            using (var form = new FormAtualizaEquipamento(dadosOperacao))
             {
                 form.ShowDialog();
             }
@@ -62,12 +62,12 @@ namespace LocacaoEquipamentos
         {
             if (DataGridViewEquipamentos.CurrentRow is null) return;
 
-            var dadosOperacao = new FormAtualizaEquipamentos.DadosOperacaoModel()
+            var dadosOperacao = new FormAtualizaEquipamento.DadosOperacaoModel()
             {
                 IdEquipamento = DataGridViewEquipamentos.GetCurrentRowInt("IdEquipamento"),
                 LocalRequest = RequestEnum.Excluir,
             };
-            using (var form = new FormAtualizaEquipamentos(dadosOperacao))
+            using (var form = new FormAtualizaEquipamento(dadosOperacao))
             {
                 form.Close();
             }
