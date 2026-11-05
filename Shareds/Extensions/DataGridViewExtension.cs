@@ -8,6 +8,8 @@ namespace LocacaoEquipamentos.Shareds.Extensions
     {
         public static string GetCurrentRow(this DataGridView dataGridView, string column)
         {
+            if (dataGridView.CurrentRow == null) return "";
+
             return (dataGridView.CurrentRow.Cells[column].Value ?? "").ToString();
         }
 

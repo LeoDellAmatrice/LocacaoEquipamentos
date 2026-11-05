@@ -83,6 +83,15 @@ namespace LocacaoEquipamentos.Classes.DataBase
             if (Cnpj.Length != 14) throw new Exception("CNPJ Inválido");
         }
 
+        public bool ValidoParaLocacao()
+        {
+
+
+            //TODO: Verificação de locações atrasadas 
+
+            return true;
+        }
+
         public void Incluir(DataContext context)
         {
             VerificaCpfCnpj(context);
@@ -116,6 +125,8 @@ namespace LocacaoEquipamentos.Classes.DataBase
 
         public void Excluir(DataContext context, int idCliente)
         {
+            if (idCliente == 0) return;
+
             IdCliente = idCliente;
 
             var entry = context.Entry(this);
@@ -124,6 +135,13 @@ namespace LocacaoEquipamentos.Classes.DataBase
 
             context.Clientes.Remove(this);
             context.SaveChanges();
+        }
+
+        public string GetNome()
+        {
+            if (TipoPessoa == TipoPessoaEnum.Fisica) return Nome;
+
+            return NomeFantasia;
         }
     }
 }

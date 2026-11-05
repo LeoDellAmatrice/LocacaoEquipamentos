@@ -73,6 +73,8 @@ namespace LocacaoEquipamentos.Classes
 
         public void Excluir(DataContext context, int idEquipamento)
         {
+            if (idEquipamento == 0) return;
+
             IdEquipamento = idEquipamento;
 
             var entry = context.Entry(this);
